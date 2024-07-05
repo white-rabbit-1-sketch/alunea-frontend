@@ -1,0 +1,2 @@
+<button mat-flat-button *ngIf="!deviceService.isMobile()" color="primary" (click)="signout()" i18n>Logout</button>
+<button mat-icon-button *ngIf="deviceService.isMobile()" (click)="signout()"><mat-icon>logout</mat-icon></button>

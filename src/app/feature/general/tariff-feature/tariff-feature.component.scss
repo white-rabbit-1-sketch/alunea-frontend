@@ -1,0 +1,27 @@
+.tariff-card {
+  max-width: 400px;
+  background-color: var(--theme-container-background-color-primary);
+  height: 100%;
+
+  .price-accent {
+    color: var(--theme-price-color-primary) !important;
+  }
+
+  mat-card-title {
+    font-size: 40px;
+  }
+
+  mat-card-header {
+    min-height: 160px;
+  }
+}
+
+.help-icon {
+  color: var(--theme-color-primary) !important;
+}
+
+::ng-deep .mat-mdc-tooltip > * {
+  background-color: var(--theme-color-primary) !important;
+}
+
+

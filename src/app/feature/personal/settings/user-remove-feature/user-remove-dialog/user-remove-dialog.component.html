@@ -1,0 +1,11 @@
+<h1 mat-dialog-title i18n>Account delete</h1>
+<mat-dialog-content class="mat-typography">
+  <h3 class="color-red" i18n>Warning</h3>
+  <p i18n>
+    Are you sure you want to delete your account? This action is irreversible and will result in the permanent removal of all your data and settings. Please note that after deletion, email forwarding services will cease to function. Proceed with caution.
+  </p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close i18n>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" color="warn" cdkFocusInitial i18n>Delete account</button>
+</mat-dialog-actions>

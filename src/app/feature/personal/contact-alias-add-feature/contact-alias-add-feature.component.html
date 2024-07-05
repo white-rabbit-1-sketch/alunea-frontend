@@ -1,0 +1,70 @@
+<form [formGroup]="aliasForm">
+  <div class="row">
+    <mat-form-field class="w-100">
+      <mat-label i18n>Recipient</mat-label>
+      <input type="text" matInput [formControl]="recipientFormControl" placeholder="john-smith">
+      @if (recipientFormControl.hasError('aliasexists') && !recipientFormControl.hasError('required')) {
+      <mat-error i18n>Alias with this <strong>recipient</strong> is already exists</mat-error>
+      }
+      @if (recipientFormControl.hasError('pattern') && !recipientFormControl.hasError('required')) {
+      <mat-error i18n>Please specify a valid <strong>recipient</strong></mat-error>
+      }
+      @if (recipientFormControl.hasError('required')) {
+      <mat-error i18n>Please specify a <strong>recipient</strong></mat-error>
+      }
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field class="w-100">
+      <mat-label i18n>Mailbox alias</mat-label>
+      <mat-select [formControl]="mailboxAliasFormControl">
+        <mat-option>
+          <ngx-mat-select-search
+            [formControl]="mailboxAliasFilterFormControl"
+            placeholderLabel="Search"
+            noEntriesFoundLabel="No matching alias found"
+          ></ngx-mat-select-search>
+        </mat-option>
+
+        @for (mailboxAlias of mailboxAliasFilteredList; track mailboxAlias) {
+        <mat-option [value]="mailboxAlias.getId()">{{mailboxAlias.getRecipient()}}&#64;{{
+        mailboxAlias.getDomain()?.getDomain()}}</mat-option>
+        }
+      </mat-select>
+      @if (contactFormControl.hasError('required')) {
+      <mat-error i18n>Please chose <strong>mailbox alias</strong></mat-error>
+      }
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field class="w-100">
+      <mat-label i18n>Contact</mat-label>
+      <mat-select [formControl]="contactFormControl">
+        @for (contact of contactList; track contact) {
+        <mat-option [value]="contact.getId()">{{contact.getEmail()}}</mat-option>
+        }
+      </mat-select>
+      @if (contactFormControl.hasError('required')) {
+      <mat-error i18n>Please chose <strong>contact</strong></mat-error>
+      }
+    </mat-form-field>
+  </div>
+  <ng-container *ngIf="aliasFormChosenMailboxAlias && aliasFormChosenContact && recipientFormControl.value">
+    <div class="row">
+      <div class="col">
+        <div class="alert alert-primary" role="alert" i18n>
+          Emails sent to the contact alias <strong>{{recipientFormControl.value}}&#64;{{aliasFormChosenMailboxAlias.getDomain()?.getDomain()}}</strong>
+          will be automatically forwarded to the contact email address <strong>{{aliasFormChosenContact.getEmail()}}</strong>
+          on behalf of mailbox alias <strong>{{aliasFormChosenMailboxAlias.getRecipient()}}&#64;{{aliasFormChosenMailboxAlias.getDomain()?.getDomain()}}</strong>.
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <div class="row">
+    <div class="col d-flex justify-content-end">
+      <button mat-flat-button type="button" color="primary" (click)="onAliasFormSubmit()"
+              [disabled]="isSubmitButtonDisabled" i18n>Add alias
+      </button>
+    </div>
+  </div>
+</form>

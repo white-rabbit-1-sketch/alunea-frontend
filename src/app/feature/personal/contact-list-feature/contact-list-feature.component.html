@@ -1,0 +1,85 @@
+<mat-form-field class="w-100">
+    <input matInput (keyup)="applyFilter($event)" i18n-placeholder placeholder="Search" #input>
+</mat-form-field>
+
+<div>
+    <table mat-table [dataSource]="dataSource" multiTemplateDataRows matSort (matSortChange)="onSortChange()" matSortActive="email" matSortDirection="asc">
+
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Email</th>
+            <td mat-cell *matCellDef="let contact" [ngClass]="{ 'disabled': !contact.getIsEnabled() }">
+                <strong>{{contact.getEmail()}}</strong>
+                <span class="badge text-bg-primary ms-1" *ngIf="!deviceService.isMobile()">{{contact.getAliasesCount()}}
+                    <ng-container i18n>{contact.getAliasesCount(), plural, =1 {alias} =2 {aliases} =3 {aliases} =4 {aliases} other {aliases}}</ng-container>
+                </span>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n></th>
+            <td mat-cell *matCellDef="let contact" [ngClass]="{ 'disabled': !contact.getIsEnabled() }">
+                <mat-slide-toggle color="primary" [checked]="contact.getIsEnabled()" (change)="toggleContactEnablingStatus(contact)"></mat-slide-toggle>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="expand">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let contact">
+                <button mat-icon-button aria-label="expand row" (click)="(expandedContact = expandedContact === contact ? null : contact); $event.stopPropagation()">
+                    @if (expandedContact === contact) {
+                    <mat-icon>keyboard_arrow_up</mat-icon>
+                    } @else {
+                    <mat-icon>keyboard_arrow_down</mat-icon>
+                    }
+                </button>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="actions" stickyEnd>
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let contact">
+                <button mat-icon-button [matMenuTriggerFor]="menu" i18n-aria-label aria-label="Actions">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item *ngIf="!contact.getIsEnabled()" (click)="enableContact(contact)">
+                        <mat-icon>visibility_on</mat-icon>
+                        <ng-container i18n>Enable</ng-container>
+                    </button>
+                    <button mat-menu-item *ngIf="contact.getIsEnabled()" (click)="disableContact(contact)">
+                        <mat-icon>visibility_off</mat-icon>
+                        <ng-container i18n>Disable</ng-container>
+                    </button>
+                    <button mat-menu-item (click)="removeContact(contact)">
+                        <mat-icon color="warn">delete</mat-icon>
+                        <ng-container i18n>Remove</ng-container>
+                    </button>
+                </mat-menu>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="expandedDetail">
+            <td mat-cell *matCellDef="let contact" [attr.colspan]="displayedColumnList.length">
+                <div [@detailExpand]="contact == expandedContact ? 'expanded' : 'collapsed'">
+
+                    <div class="mb-2">
+                        <div class="alert alert-primary" role="alert">
+                            {{contact.getAliasesCount()}} {contact.getAliasesCount(), plural, =1 {alias} =2 {aliases} =3 {aliases} =4 {aliases} other {aliases}}
+                        </div>
+                    </div>
+
+                </div>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumnList"></tr>
+        <tr mat-row *matRowDef="let contact; columns: displayedColumnList;" class="contact-row"></tr>
+        <tr mat-row *matRowDef="let contact; columns: ['expandedDetail']" class="contact-detail-row"></tr>
+
+<tr class="mat-row" *matNoDataRow>
+  <td class="mat-cell p-3" colspan="4">
+    <ng-container *ngIf="input.value; else nodata;" i18n>No data matching the filter "{{input.value}}"</ng-container>
+    <ng-template #nodata i18n>Here will be your contacts. Take your time and add it now!</ng-template>
+  </td>
+</tr>
+    </table>
+
+    <mat-paginator pageSize="10" [hidePageSize]="true" i18n-aria-label aria-label="Select page of contacts"></mat-paginator>
+</div>

@@ -1,0 +1,24 @@
+<form [formGroup]="emailSubscriptionForm">
+  <div class="row">
+    <div class="col">
+      <mat-form-field class="w-100">
+        <mat-label i18n>Email</mat-label>
+        <input type="text" matInput [formControl]="emailFormControl" placeholder="john-smith@example.com">
+        @if (
+          (emailFormControl.hasError('email') || emailFormControl.hasError('pattern')) &&
+          !emailFormControl.hasError('required')
+        ) {
+        <mat-error i18n>Please enter a valid <strong>email</strong></mat-error>
+        }
+        @if (emailFormControl.hasError('required')) {
+        <mat-error i18n>Please enter <strong>email</strong></mat-error>
+        }
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col d-flex justify-content-end">
+      <button mat-flat-button type="button" color="primary" (click)="onEmailSubscriptionFormSubmit()" [disabled]="isSubmitButtonDisabled" i18n>Subscribe</button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,57 @@
+<div class="header-container">
+  <div class="desktop">
+    <mat-toolbar class="d-flex justify-content-between align-items-center rounded-4">
+      <app-logo></app-logo>
+
+      <div class="ms-2">
+        <mat-nav-list>
+          <button mat-button (click)="routerService.redirectAndScroll('/', 'why-silvermail')" i18n>About</button>
+          <button mat-button (click)="routerService.redirectAndScroll('/', 'how-it-works')" i18n>How it works</button>
+          <button mat-button (click)="routerService.redirectAndScroll('/', 'features')" i18n>Features</button>
+          <button mat-button (click)="routerService.redirectAndScroll('/', 'plans')" i18n>Pricing</button>
+          <button mat-button (click)="routerService.redirectAndScroll('/', 'faq')" i18n>FAQ</button>
+          <a mat-button target="_blank" color="warn" href="https://www.reddit.com/r/Alunea/">Reddit</a>
+        </mat-nav-list>
+      </div>
+
+      <div class="d-inline-flex ms-md-auto align-items-center">
+        <app-language-selector-feature></app-language-selector-feature>
+        <app-theme-manager-feature></app-theme-manager-feature>
+
+        <button mat-flat-button color="primary" routerLink="/signin" i18n>Login</button>
+      </div>
+    </mat-toolbar>
+  </div>
+
+  <div class="mobile mobile-toolbar-container">
+    <mat-toolbar class="d-flex justify-content-between align-items-center">
+      <div class="d-inline-flex align-items-center">
+        <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+        <app-logo></app-logo>
+      </div>
+      <div class="d-inline-flex align-items-center">
+        <app-language-selector-feature></app-language-selector-feature>
+        <app-theme-manager-feature></app-theme-manager-feature>
+
+        <button mat-icon-button color="primary" routerLink="/signin"><mat-icon>login</mat-icon></button>
+      </div>
+    </mat-toolbar>
+
+    <mat-sidenav-container>
+      <mat-sidenav #snav mode="side" fixedInViewport="true" fixedTopGap="56">
+        <mat-nav-list>
+          <a mat-list-item (click)="navigateAndClose('/', 'why-silvermail')" i18n>About</a>
+          <a mat-list-item (click)="navigateAndClose('/', 'how-it-works')" i18n>How it works</a>
+          <a mat-list-item (click)="navigateAndClose('/', 'features')" i18n>Features</a>
+          <a mat-list-item (click)="navigateAndClose('/', 'plans')" i18n>Pricing</a>
+          <a mat-list-item (click)="navigateAndClose('/', 'faq')" i18n>FAQ</a>
+          <mat-list-item>
+            <a mat-button target="_blank" color="warn" href="https://www.reddit.com/r/Alunea/">Reddit</a>
+          </mat-list-item>
+
+        </mat-nav-list>
+      </mat-sidenav>
+    </mat-sidenav-container>
+  </div>
+</div>
+

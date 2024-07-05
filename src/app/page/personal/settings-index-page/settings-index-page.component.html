@@ -1,0 +1,158 @@
+<div class="row">
+  <div class="col mnw-65">
+    <div class="mb-5">
+      <h2 class="pb-2" i18n>Settings</h2>
+      <p class="opacity-70" i18n>Here, you can find your settings.</p>
+    </div>
+
+    <div class="mb-5">
+      <h2 class="pb-2" i18n>Account email</h2>
+      <p class="opacity-70" i18n>
+        Your email address serves as the login for your Alunea account and is also used to receive important service-related communications. Please note that this email address is distinct from your mailboxes and will not receive forwarded emails from aliases.
+      </p>
+    </div>
+    <app-user-email-change-feature></app-user-email-change-feature>
+
+    <div class="mb-5">
+      <h2 class="pb-2" i18n>Account password</h2>
+      <p class="opacity-70" i18n>
+        Updating your password is an essential step in maintaining the security of your Alunea account. Please note that after changing your password, all active sessions except the current one will be terminated as a security measure.
+      </p>
+    </div>
+    <app-user-password-change-feature></app-user-password-change-feature>
+
+    <div class="mb-5">
+      <h2 class="pb-2"><ng-container i18n>Two-Factor Authentication</ng-container> <span class="badge text-bg-warning ms-1" i18n>coming soon</span></h2>
+      <p class="opacity-70" i18n>
+        Enhance the security of your Alunea account by enabling two-factor authentication (2FA). Two-factor authentication adds an extra layer of protection to your account, requiring not only a password but also a second form of verification to access your account.
+      </p>
+    </div>
+
+    <div class="mb-5">
+      <h2 class="pb-2" i18n>Favorite domain</h2>
+      <p class="opacity-70" i18n>
+        Choose your preferred domain below. This domain will be automatically selected by default when adding new aliases for your convenience.
+      </p>
+    </div>
+    <app-user-favorite-domain-feature></app-user-favorite-domain-feature>
+
+    <div class="mb-5">
+      <h2 class="pb-2" i18n>Favorite mailbox</h2>
+      <p class="opacity-70" i18n>
+        Choose your preferred mailbox below. This mailbox will be automatically selected by default when adding new aliases for your convenience.
+      </p>
+    </div>
+    <app-user-favorite-mailbox-feature></app-user-favorite-mailbox-feature>
+
+    <div class="mb-5">
+      <h2 class="pb-2" i18n>Language</h2>
+      <p class="opacity-70" i18n>
+        Choose Your Language. Please note that selecting a language here affects only the communications on our website, such as messages and notifications. It does not change the language of the entire application. If you need to switch the language of the entire application, you can do so from the top menu.
+      </p>
+    </div>
+    <app-user-language-feature></app-user-language-feature>
+
+    <div class="mb-5">
+      <h2 class="pb-2" i18n>Account delete</h2>
+      <p class="opacity-70" i18n>
+        We're sorry to see you go! If you no longer wish to use Alunea, you have the option to delete your account. Please be aware that deleting your account is irreversible and will permanently remove all data associated with your account, including your mailboxes, aliases, settings, and any domains.
+      </p>
+    </div>
+    <app-user-remove-feature></app-user-remove-feature>
+
+
+  </div>
+  <div class="col pt-4">
+    <div class="text-center">
+      <img src="../../../../assets/img/banner-10.svg" width="200" alt="Alunea"/>
+    </div>
+
+
+    <div class="mt-5 mb-5 text-center">
+      <h2 class="pb-2" i18n>Need help ?</h2>
+      <p class="opacity-70" i18n>Here, you'll find answers to common queries about settings. If you have a question that's not listed below, feel free to reach out to us for assistance.</p>
+    </div>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title i18n>
+            What happens when I change my password?
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p class="opacity-70" i18n>
+          When you change your password, your current password will be replaced with the new one. Additionally, for security reasons, all active sessions except the current one will be terminated to ensure that only you have access to your account.
+        </p>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title i18n>
+            What happens when I enable two-factor authentication (2FA)?
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p class="opacity-70" i18n>
+          Enabling two-factor authentication adds an extra layer of security to your account. After enabling 2FA, you will be required to enter a verification code from your chosen method in addition to your password every time you log in to your Alunea account. This helps protect your account from unauthorized access, even if your password is compromised.
+        </p>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title i18n>
+            What happens when I change my email address?
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p class="opacity-70" i18n>
+          When you change your email address, your new email address will replace the current one associated with your Alunea account. Please note that your email address serves as your login for Alunea and is used to receive important service-related communications. However, changing your email address will not affect your mailboxes or aliases.
+        </p>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title i18n>
+            Can I delete my account?
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p class="opacity-70" i18n>
+          Yes, you can delete your Alunea account if you no longer wish to use our services. However, please note that deleting your account will permanently remove all data associated with your account, including your mailboxes, aliases, and settings. Once deleted, this action cannot be undone.
+        </p>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title i18n>
+            Can I mark a domain as a favorite?
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p class="opacity-70" i18n>
+          Certainly. You can do it on the settings page.
+        </p>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title i18n>
+            What does it mean to mark a domain as favorite?
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p class="opacity-70" i18n>
+          Marking a domain as favorite ensures it's automatically chosen when adding a new alias, enhancing convenience.
+        </p>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title i18n>
+            Can I mark a mailbox as a favorite?
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p class="opacity-70" i18n>
+          Certainly. You can do it on the settings page.
+        </p>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title i18n>
+            What does it mean to mark a mailbox as favorite?
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p class="opacity-70" i18n>
+          Marking a mailbox as favorite ensures it's automatically chosen when adding a new alias, enhancing convenience.
+        </p>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

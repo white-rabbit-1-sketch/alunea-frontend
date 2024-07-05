@@ -1,0 +1,21 @@
+.mobile-toolbar-container {
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+
+  mat-sidenav-container {
+    flex: 1;
+    //flex: 1 0 auto;
+  }
+}
+
+.mobile-toolbar-container, .mobile-toolbar-container mat-toolbar {
+  position: fixed;
+  z-index: 2;
+}
+
+mat-toolbar, mat-sidenav {
+  background-color: var(--theme-container-background-color-secondary);
+}

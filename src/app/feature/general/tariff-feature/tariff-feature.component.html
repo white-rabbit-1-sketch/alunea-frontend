@@ -1,0 +1,173 @@
+<div class="row text-center container-text-color-primary">
+  <div class="col">
+    <mat-card class="tariff-card rounded-4" appearance="outlined">
+      <mat-card-header class="justify-content-center">
+        <mat-card-title i18n>Basic</mat-card-title>
+        <mat-card-subtitle class="pt-3" i18n>
+          The perfect choice to experience our product. Access anonymous alias creation, message forwarding, and essential features for ensuring email privacy.
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content class="pt-5">
+        <h1><ng-container i18n>Free</ng-container>
+          <small class="fs-5 fw-light opacity-70">
+            <p i18n>Best for check it out!</p>
+          </small>
+        </h1>
+        <mat-list class="pt-5">
+          <mat-list-item>
+            <span matListItemTitle class="d-flex justify-content-center align-items-center">
+              <ng-container i18n>30 email aliases</ng-container>
+              <mat-icon i18n-matTooltip matTooltip="An alias in Alunea is an alternative email address that can be used instead of your primary email address. It helps you protect your privacy and manage incoming emails effectively." [matTooltipPosition]="'above'" class="help-icon">help_center</mat-icon>
+            </span>
+          </mat-list-item>
+          <mat-list-item>
+            <span matListItemTitle i18n>
+              Unlimited Reply/Send from alias
+            </span>
+          </mat-list-item>
+          <mat-list-item>
+            <span matListItemTitle class="d-flex justify-content-center align-items-center">
+              <ng-container i18n>1 mailbox</ng-container>
+              <mat-icon i18n-matTooltip matTooltip="A mailbox in Alunea is a representation of the user's actual email address. It serves as the destination for emails forwarded from aliases. Essentially, it is your primary email inbox within Alunea." [matTooltipPosition]="'above'" class="help-icon">help_center</mat-icon>
+            </span>
+          </mat-list-item>
+          <mat-list-item>
+            <span matListItemTitle class="d-flex justify-content-center align-items-center">
+              <ng-container i18n>1 Alunea subdomain</ng-container>
+              <mat-icon i18n-matTooltip matTooltip="A subdomain in Alunea is a custom domain extension that is exclusively owned by the user who creates it. It serves as a personalized address for creating aliases and organizing email correspondence." [matTooltipPosition]="'above'" class="help-icon">help_center</mat-icon>
+            </span>
+          </mat-list-item>
+          <mat-list-item>
+            <span matListItemTitle>
+              <ng-container i18n>iOS, Android App</ng-container>
+              <span class="badge text-bg-warning ms-1" i18n>coming soon</span>
+            </span>
+          </mat-list-item>
+          <mat-list-item>
+            <span matListItemTitle>
+              <ng-container i18n>Browser extensions</ng-container>
+              <span class="badge text-bg-warning ms-1" i18n>coming soon</span>
+            </span>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+      <mat-card-actions class="justify-content-center pb-4 pt-4">
+        <button mat-flat-button color="primary" class="button-large" routerLink="/signup"><ng-container i18n>Getting Started</ng-container></button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <div class="col">
+    <div class="mt-3 mobile"></div>
+    <mat-card class="tariff-card rounded-4" appearance="outlined">
+      <mat-card-header class="justify-content-center">
+        <mat-card-title>
+          <ng-container i18n>Premium</ng-container>
+        </mat-card-title>
+        <mat-card-subtitle class="pt-3" i18n>
+          Unlock the full potential of our product. Enjoy advanced features including custom domain integration, unlimited alias creation, and priority support for enhanced email privacy and control.
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content class="pt-5">
+        <h1 class="price-accent">$1.99
+          <small class="fs-5 fw-light opacity-70">
+            /
+            <p i18n>Per-Month</p>
+          </small>
+        </h1>
+        <mat-list class="pt-5">
+          <mat-list-item>
+            <span matListItemTitle i18n>Unlimited email aliases</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span matListItemTitle i18n>Unlimited Reply/Send from alias</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span matListItemTitle i18n>10 mailboxes</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span matListItemTitle i18n>3 Alunea subdomains</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span matListItemTitle>
+              <ng-container i18n>iOS, Android App</ng-container>
+              <span class="badge text-bg-warning ms-1" i18n>coming soon</span>
+            </span>
+          </mat-list-item>
+          <mat-list-item>
+            <span matListItemTitle>
+              <ng-container i18n>Browser extensions</ng-container>
+              <span class="badge text-bg-warning ms-1" i18n>coming soon</span>
+            </span>
+          </mat-list-item>
+          <mat-list-item>
+            <span matListItemTitle class="d-flex justify-content-center align-items-center">
+              <ng-container i18n>3 custom domains</ng-container>
+              <span class="badge text-bg-warning ms-1 ms-1" i18n>coming soon</span>
+              <mat-icon i18n-matTooltip matTooltip="Custom domain in the context of Alunea refers to the capability for users to set up and use their own personalized domain name for email services instead of relying on the default domain provided by Alunea. This feature empowers users to establish a unique online identity or brand by using a domain name that aligns with their preferences or business identity." [matTooltipPosition]="'above'" class="help-icon">help_center</mat-icon>
+            </span>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+      <mat-card-actions class="justify-content-center pb-4 pt-4">
+        <button mat-raised-button color="primary" class="button-large" (click)="notifyMeCallback()" i18n>Notify me</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <div class="col">
+    <div class="mb-3 mobile">&nbsp;</div>
+    <mat-card class="tariff-card rounded-4" appearance="outlined">
+      <mat-card-header class="justify-content-center">
+        <mat-card-title>
+          <ng-container i18n>Enterprise</ng-container>
+        </mat-card-title>
+        <mat-card-subtitle class="pt-3" i18n>
+          Tailored solutions to meet your unique needs. Enjoy customizable features, enterprise-level security, and personalized support through a bespoke agreement designed specifically for your organization's requirements.
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content class="pt-5">
+        <h1><ng-container i18n>Custom</ng-container>
+          <small class="fs-5 fw-light opacity-70">
+            <p i18n>Contact us to know your price</p>
+          </small>
+        </h1>
+        <mat-list class="pt-5">
+          <mat-list-item>
+            <span matListItemTitle i18n>Unlimited email aliases</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span matListItemTitle i18n>Unlimited Reply/Send from alias</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span matListItemTitle i18n>Unlimited mailboxes</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span matListItemTitle i18n>Unlimited Alunea subdomains</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span matListItemTitle>
+              <ng-container i18n>iOS, Android App</ng-container>
+              <span class="badge text-bg-warning ms-1" i18n>coming soon</span>
+            </span>
+          </mat-list-item>
+          <mat-list-item>
+            <span matListItemTitle>
+              <ng-container i18n>Browser extensions</ng-container>
+              <span class="badge text-bg-warning ms-1" i18n>coming soon</span>
+            </span>
+          </mat-list-item>
+          <mat-list-item>
+            <span matListItemTitle>
+              <ng-container i18n>Unlimited custom domains</ng-container>
+              <span class="badge text-bg-warning ms-1" i18n>coming soon</span>
+            </span>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+      <mat-card-actions class="justify-content-center pb-4 pt-4">
+        <button mat-raised-button color="primary" class="button-large" (click)="notifyMeCallback()" i18n>Notify me</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="alert alert-warning" role="alert" *ngIf="isEmailVerificationRequired">
+  <ng-container i18n>
+    Please verify your email address to complete the registration process.
+    An email with a verification link has been sent to your email inbox.
+    Click on the link to verify your email address and activate your account.
+    Haven't received the email ?
+  </ng-container>
+  <button mat-button type="button" color="accent" (click)="resendVerificationEmail()" class="mb-1" [disabled]="isResendButtonDisabled" i18n>Resend verification email</button>
+</div>

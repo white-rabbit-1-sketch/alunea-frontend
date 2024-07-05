@@ -1,0 +1,27 @@
+<form [formGroup]="contactForm">
+    <div class="row">
+        <div class="col">
+            <mat-form-field class="w-100">
+                <mat-label i18n>Email</mat-label>
+                <input type="text" matInput [formControl]="emailFormControl" placeholder="john-smith@example.com">
+                @if (emailFormControl.hasError('contactexists') && !emailFormControl.hasError('required')) {
+                <mat-error i18n>An contact with this <strong>email</strong> is already exists</mat-error>
+                }
+                @if (
+                  (emailFormControl.hasError('email') || emailFormControl.hasError('pattern')) &&
+                  !emailFormControl.hasError('required')
+                ) {
+                <mat-error i18n>Please enter a valid <strong>email</strong></mat-error>
+                }
+                @if (emailFormControl.hasError('required')) {
+                <mat-error i18n>Please enter <strong>email</strong></mat-error>
+                }
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col d-flex justify-content-end pt-1">
+            <button mat-flat-button type="button" color="primary" (click)="onContactFormSubmit()" [disabled]="isSubmitButtonDisabled" i18n>Add contact</button>
+        </div>
+    </div>
+</form>

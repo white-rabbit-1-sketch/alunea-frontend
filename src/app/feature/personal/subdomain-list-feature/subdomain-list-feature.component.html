@@ -1,0 +1,108 @@
+<mat-form-field class="w-100">
+  <input matInput (keyup)="applyFilter($event)" i18n-placeholder placeholder="Search" #input>
+</mat-form-field>
+
+<div>
+  <table mat-table [dataSource]="dataSource" multiTemplateDataRows matSort (matSortChange)="onSortChange()" matSortActive="domain" matSortDirection="asc">
+
+    <ng-container matColumnDef="domain">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Subdomain</th>
+      <td mat-cell *matCellDef="let subdomain" [ngClass]="{ 'disabled': !subdomain.getIsEnabled() }">
+        <strong>{{subdomain.getDomain()}}</strong>
+        <span class="badge text-bg-primary ms-1" *ngIf="!deviceService.isMobile()">{{subdomain.getAliasesCount()}}
+          <ng-container i18n>{subdomain.getAliasesCount(), plural, =1 {alias} =2 {aliases} =3 {aliases} =4 {aliases} other {aliases}}</ng-container>
+        </span>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="catch-all-status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Catch all ?</th>
+      <td mat-cell *matCellDef="let subdomain" [ngClass]="{ 'disabled': !subdomain.getIsEnabled() }">
+        <mat-slide-toggle color="primary" [checked]="subdomain.getCatchAllMailbox()" (change)="toggleSubdomainCatchAllEnablingStatus($event, subdomain)"></mat-slide-toggle>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Enabled ?</th>
+      <td mat-cell *matCellDef="let subdomain" [ngClass]="{ 'disabled': !subdomain.getIsEnabled() }">
+        <mat-slide-toggle color="primary" [checked]="subdomain.getIsEnabled()" (change)="toggleSubdomainEnablingStatus(subdomain)"></mat-slide-toggle>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="expand">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let subdomain">
+        <button mat-icon-button aria-label="expand row" (click)="(expandedSubdomain = expandedSubdomain === subdomain ? null : subdomain); $event.stopPropagation()">
+          @if (expandedSubdomain === subdomain) {
+          <mat-icon>keyboard_arrow_up</mat-icon>
+          } @else {
+          <mat-icon>keyboard_arrow_down</mat-icon>
+          }
+        </button>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="actions" stickyEnd>
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let subdomain">
+        <button mat-icon-button [matMenuTriggerFor]="menu" i18n-aria-label aria-label="Actions">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item *ngIf="!subdomain.getIsEnabled()" (click)="enableSubdomain(subdomain)">
+            <mat-icon>visibility_on</mat-icon>
+            <ng-container i18n>Enable domain</ng-container>
+          </button>
+          <button mat-menu-item *ngIf="subdomain.getIsEnabled()" (click)="disableSubdomain(subdomain)">
+            <mat-icon>visibility_off</mat-icon>
+            <ng-container i18n>Disable domain</ng-container>
+          </button>
+          <button mat-menu-item *ngIf="!subdomain.getCatchAllMailbox()" (click)="enableSubdomainCatchAll($event, subdomain)">
+            <mat-icon>flash_on</mat-icon>
+            <ng-container i18n>Enable catch-all</ng-container>
+          </button>
+          <button mat-menu-item *ngIf="subdomain.getCatchAllMailbox()" (click)="disableSubdomainCatchAll(subdomain)">
+            <mat-icon>flash_off</mat-icon>
+            <ng-container i18n>Disable catch-all</ng-container>
+          </button>
+          <button mat-menu-item (click)="removeSubdomain(subdomain)">
+            <mat-icon color="warn">delete</mat-icon>
+            <ng-container i18n>Remove</ng-container>
+          </button>
+        </mat-menu>
+      </td>
+    </ng-container>
+
+          <ng-container matColumnDef="expandedDetail">
+            <td mat-cell *matCellDef="let subdomain" [attr.colspan]="displayedColumnList.length">
+                  <div [@detailExpand]="subdomain == expandedSubdomain ? 'expanded' : 'collapsed'">
+
+                  <div class="mb-2">
+                  <div class="alert alert-primary" role="alert">
+                    {{subdomain.getAliasesCount()}} {subdomain.getAliasesCount(), plural, =1 {alias} =2 {aliases} =3 {aliases} =4 {aliases} other {aliases}}
+                  </div>
+                  <div class="alert alert-primary" role="alert">
+                    <ng-container *ngIf="subdomain.getCatchAllMailbox()" i18n>
+                      Domain's catch-all function is <strong>enabled</strong> - {{subdomain.getCatchAllMailbox().getEmail()}}
+                    </ng-container>
+                    <ng-container *ngIf="!subdomain.getCatchAllMailbox()" i18n>
+                      Domain's catch-all function is <strong>disabled</strong>
+                    </ng-container>
+                  </div>
+            </div>
+
+            </div>
+            </td>
+            </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumnList"></tr>
+    <tr mat-row *matRowDef="let subdomain; columns: displayedColumnList;" class="subdomain-row"></tr>
+    <tr mat-row *matRowDef="let subdomain; columns: ['expandedDetail']" class="subdomain-detail-row"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell p-3" colspan="4">
+        <ng-container *ngIf="input.value; else nodata;" i18n>No data matching the filter "{{input.value}}"</ng-container>
+        <ng-template #nodata i18n>Here will be your subdomains. Take your time and add it now!</ng-template>
+      </td>
+    </tr>
+  </table>
+
+  <mat-paginator pageSize="10" [hidePageSize]="true" i18n-aria-label aria-label="Select page of subdomains"></mat-paginator>
+</div>

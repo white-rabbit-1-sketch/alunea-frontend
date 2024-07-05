@@ -1,0 +1,47 @@
+<form [formGroup]="subdomainForm">
+  <div class="row">
+    <div class="col">
+      <mat-form-field class="w-100">
+        <mat-label i18n>Subdomain</mat-label>
+        <input type="text" matInput [formControl]="subdomainFormControl" placeholder="john-smith">
+        @if (subdomainFormControl.hasError('subdomainexists') && !subdomainFormControl.hasError('required')) {
+        <mat-error i18n>This <strong>subdomain</strong> is already exists</mat-error>
+        }
+        @if (subdomainFormControl.hasError('pattern') && !subdomainFormControl.hasError('required')) {
+        <mat-error i18n>Please enter a valid <strong>subdomain</strong></mat-error>
+        }
+        @if (subdomainFormControl.hasError('required')) {
+        <mat-error i18n>Please enter <strong>subdomain</strong></mat-error>
+        }
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-form-field class="w-100">
+        <mat-label i18n>Domain</mat-label>
+        <mat-select [formControl]="domainFormControl" (selectionChange)="onDomainFormControlChange()">
+          @for (domain of domainList; track domain) {
+          <mat-option [value]="domain.getId()">{{domain.getDomain()}}</mat-option>
+          }
+        </mat-select>
+        @if (domainFormControl.hasError('required')) {
+        <mat-error i18n>Please chose <strong>domain</strong></mat-error>
+        }
+      </mat-form-field>
+    </div>
+  </div>
+  <ng-container *ngIf="subdomainFormChosenDomain && subdomainFormControl.value">
+    <div class="row">
+      <div class="col">
+        <div class="alert alert-primary" role="alert" i18n>
+          Domain <strong>{{subdomainFormControl.value}}.{{subdomainFormChosenDomain.getDomain()}}</strong>
+          will be created
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <div class="row">
+    <div class="col d-flex justify-content-end pt-1">
+      <button mat-flat-button type="button" color="primary" (click)="onSubdomainFormSubmit()" [disabled]="isSubmitButtonDisabled" i18n>Add subdomain</button>
+    </div>
+  </div>
+</form>

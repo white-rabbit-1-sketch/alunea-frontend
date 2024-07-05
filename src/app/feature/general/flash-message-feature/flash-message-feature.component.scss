@@ -1,0 +1,14 @@
+.primary {
+  background-color: var(--theme-flash-message-background-color-primary);
+  color: var(--theme-flash-message-text-color-primary);
+}
+
+.warn {
+  background-color: var(--theme-flash-message-background-color-warn);
+  color: var(--theme-flash-message-text-color-warn);
+}
+
+.success {
+  background-color: var(--theme-flash-message-background-color-success);
+  color: var(--theme-flash-message-text-color-success);
+}

@@ -1,0 +1,22 @@
+<form [formGroup]="languageForm">
+    <div class="row">
+        <div class="col">
+            <mat-form-field class="w-100">
+                <mat-label>Language</mat-label>
+                <mat-select [formControl]="languageFormControl">
+                    @for (language of languageList; track language) {
+                    <mat-option [value]="language.getId()">{{language.getTitle()}}</mat-option>
+                    }
+                </mat-select>
+                @if (languageFormControl.hasError('required')) {
+                <mat-error i18n>Please chose <strong>language</strong></mat-error>
+                }
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col d-flex justify-content-end">
+            <button mat-flat-button type="button" color="primary" (click)="onLanguageFormSubmit()" [disabled]="isSubmitButtonDisabled" i18n>Save</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,11 @@
+<h1 mat-dialog-title i18n>Alias remove</h1>
+<mat-dialog-content class="mat-typography">
+    <h3 class="color-red" i18n>Warning</h3>
+    <p i18n>
+        This action is reversible, and the alias can be recreated later if needed.
+    </p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close i18n>Cancel</button>
+    <button mat-button [mat-dialog-close]="true" color="warn" cdkFocusInitial i18n>Remove</button>
+</mat-dialog-actions>

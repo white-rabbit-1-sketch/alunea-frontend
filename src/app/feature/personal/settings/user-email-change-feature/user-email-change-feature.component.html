@@ -1,0 +1,30 @@
+<form [formGroup]="emailForm">
+  <div class="row">
+    <div class="col">
+      <mat-form-field class="w-100">
+        <mat-label i18n>Email</mat-label>
+        <input type="text" matInput [formControl]="emailFormControl">
+        @if (emailFormControl.hasError('emailnotavailable') && !emailFormControl.hasError('required')) {
+        <mat-error i18n>This <strong>email</strong> is not available</mat-error>
+        }
+        @if (emailFormControl.hasError('emailnotchanged') && !emailFormControl.hasError('required')) {
+        <mat-error i18n>This is your current <strong>email</strong></mat-error>
+        }
+        @if (
+          (emailFormControl.hasError('email') || emailFormControl.hasError('pattern')) &&
+          !emailFormControl.hasError('required')
+        ) {
+        <mat-error i18n>Please enter a valid <strong>email</strong></mat-error>
+        }
+        @if (emailFormControl.hasError('required')) {
+        <mat-error i18n>Please enter <strong>email</strong></mat-error>
+        }
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col d-flex justify-content-end">
+      <button mat-flat-button type="button" color="primary" (click)="onEmailFormSubmit()" [disabled]="isSubmitButtonDisabled" i18n>Change</button>
+    </div>
+  </div>
+</form>

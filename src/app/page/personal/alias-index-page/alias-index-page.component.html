@@ -1,0 +1,109 @@
+<div class="row">
+  <div class="col mnw-65">
+    <div class="mb-5">
+      <h2 class="pb-2" i18n>Your aliases</h2>
+      <p class="opacity-70" i18n>Here, you can find your aliases.</p>
+    </div>
+
+    <mat-tab-group animationDuration="0ms">
+      <mat-tab i18n-label label="Mailbox aliases">
+        <div class="pt-3">
+          <app-mailbox-alias-list-feature></app-mailbox-alias-list-feature>
+        </div>
+
+
+        <div class="mt-5">
+          <h2 class="pb-2 mt-0" i18n>New alias</h2>
+          <p class="opacity-70" i18n>Here, you can add a new alias.</p>
+        </div>
+        <app-mailbox-alias-add-feature></app-mailbox-alias-add-feature>
+      </mat-tab>
+      <mat-tab i18n-label label="Contact aliases">
+        <div class="pt-3">
+          <app-contact-alias-list-feature></app-contact-alias-list-feature>
+        </div>
+
+
+        <div class="mt-5">
+          <h2 class="pb-2 mt-0" i18n>New alias</h2>
+          <p class="opacity-70" i18n>Here, you can add a new alias.</p>
+        </div>
+        <app-contact-alias-add-feature></app-contact-alias-add-feature>
+      </mat-tab>
+    </mat-tab-group>
+
+  </div>
+  <div class="col pt-4">
+    <div class="text-center">
+      <img src="../../../../assets/img/banner-16.svg" width="200" alt="Alunea"/>
+    </div>
+
+
+    <div class="mt-5 mb-5 text-center">
+      <h2 class="pb-2" i18n>Need help ?</h2>
+      <p class="opacity-70" i18n>Here, you'll find answers to common questions about aliases. If you have a question that's not listed below, feel free to reach out to us for assistance.</p>
+    </div>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title i18n>
+            What is a mailbox alias?
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p class="opacity-70" i18n>
+          A mailbox alias is an alternative email address used to receive emails on specific mailboxes through aliases. When using this type of alias, all incoming emails are automatically forwarded to the real email address, simplifying email organization and ensuring confidentiality.
+        </p>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title i18n>
+            What is a contact alias?
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p class="opacity-70" i18n>
+          A contact alias is an alternative email address used to send emails to contacts via aliases. With this type of alias, users can communicate with contacts without revealing their primary email address. This helps maintain privacy and security while facilitating communication.
+        </p>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title i18n>
+            What happens if I delete an alias?
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p class="opacity-70" i18n>
+          Deleting an alias removes it from your list, but you can recreate the alias later if needed. This action does not affect the functionality of your primary email address. Additionally, any incoming emails previously associated with the deleted alias will no longer be forwarded, and any emails sent to that alias will no longer be received.
+        </p>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title i18n>
+            How does a mailbox alias work?
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p class="opacity-70" i18n>
+          A mailbox alias functions as an alternative email address that redirects messages to the recipient's primary email inbox. When someone sends an email to the mailbox alias, the message is automatically forwarded to the real email address associated with that alias. This type of alias is used to receive emails on specific mailboxes, helping users manage multiple email identities while maintaining privacy and organization in their communication.
+        </p>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title i18n>
+            How does a contact alias work?
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p class="opacity-70" i18n>
+          A contact alias functions as an alternative email address used to send emails to contacts. When someone sends an email using the contact alias, the message is not sent directly from the contact alias. Instead, it is forwarded from the mailbox alias associated with the contact alias. This ensures that the sender's primary email address remains private, while facilitating communication with contacts.
+        </p>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title i18n>
+            What happens if I disable/enable an alias?
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p class="opacity-70" i18n>
+          Disabling an alias in Alunea temporarily stops the forwarding of emails to that alias. However, the alias remains intact and can be enabled again at any time. Enabling an alias restores the forwarding of emails to that alias, allowing you to resume receiving emails sent to it.
+        </p>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

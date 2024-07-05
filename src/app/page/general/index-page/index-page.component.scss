@@ -1,0 +1,35 @@
+.feature-icon {
+  max-width: 10rem;
+  max-height: 10rem;
+
+  img {
+    width: 10rem;
+    height: 10rem;
+  }
+
+  border-radius: 100%;
+  margin: auto;
+  margin-bottom: 30px;
+  box-shadow: 0 0 10px 2px #fcd5e1;
+}
+
+.gradient-1 {
+  background: linear-gradient(to top, #ff4f58, #ffb400);
+}
+
+.gradient-2 {
+  background: linear-gradient(to top, #e85aca, #fc4e65);
+}
+
+.gradient-3 {
+  background: linear-gradient(to top, #5f51b5, #ce62fd);
+}
+
+@media only screen and (max-width: 767px) {
+  img {
+    max-width: calc(90vw);
+  }
+}
+
+
+

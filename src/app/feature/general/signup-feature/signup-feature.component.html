@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col text-center" i18n>
+    Sign up
+  </div>
+</div>
+<form [formGroup]="signupForm" (ngSubmit)="onSignupFormSubmit()">
+  <div class="row mt-3">
+    <mat-form-field>
+      <mat-label i18n>Email</mat-label>
+      <input type="email" matInput [formControl]="emailFormControl">
+      @if (
+        (emailFormControl.hasError('email') || emailFormControl.hasError('pattern')) &&
+        !emailFormControl.hasError('required')
+      ) {
+      <mat-error i18n>Please enter a valid <strong>email</strong> address</mat-error>
+      }
+      @if (emailFormControl.hasError('emailnotavailable') && !emailFormControl.hasError('required')) {
+      <mat-error i18n>This <strong>email</strong> is not available</mat-error>
+      }
+      @if (emailFormControl.hasError('required')) {
+      <mat-error i18n>Please enter an <strong>email</strong></mat-error>
+      }
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field>
+      <mat-label i18n>Password</mat-label>
+      <input type="password" matInput [formControl]="passwordFormControl">
+      @if (passwordFormControl.hasError('minlength') && !passwordFormControl.hasError('required')) {
+      <mat-error i18n><strong>Password</strong> must be at least 8 characters long</mat-error>
+      }
+      @if (passwordFormControl.hasError('maxlength') && !passwordFormControl.hasError('required')) {
+      <mat-error i18n><strong>Password</strong> must not exceed 100 characters in length</mat-error>
+      }
+      @if (passwordFormControl.hasError('required')) {
+      <mat-error i18n>Please enter a <strong>password</strong></mat-error>
+      }
+    </mat-form-field>
+  </div>
+  <div class="row mt-3">
+    <div class="col">
+      <button mat-flat-button color="primary" type="submit" class="w-100" [disabled]="isSubmitButtonDisabled" i18n>Sign up</button>
+    </div>
+  </div>
+</form>
+<div class="row mt-3 text-center justify-content-center">
+  <div class="col d-flex align-items-center justify-content-center">
+    <div i18n>Have an account ?</div>
+    <div class="ms-2">
+      <button mat-button color="primary" routerLink="/signin" i18n>Sign in</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,239 @@
+@use '@angular/material' as mat;
+@use 'sass:map';
+
+$theme-dark-palette-primary: mat.define-palette(mat.$deep-purple-palette); //$indigo-palette
+$theme-dark-palette-accent: mat.define-palette(mat.$yellow-palette, A200, A100, A400); //$pink-palette
+$theme-dark-palette-warn: mat.define-palette(mat.$red-palette);
+
+$theme-light-palette-primary: mat.define-palette(mat.$deep-purple-palette); //$indigo-palette
+$theme-light-palette-accent: mat.define-palette(mat.$orange-palette, A200, A100, A400); //$pink-palette
+$theme-light-palette-warn: mat.define-palette(mat.$red-palette);
+
+$theme-dark-color-primary: map.get($theme-dark-palette-primary, 500);
+$theme-dark-color-accent: map.get($theme-dark-palette-accent, 500);
+$theme-dark-color-warn: map.get($theme-dark-palette-warn, 500);
+
+$theme-light-color-primary: map.get($theme-light-palette-primary, 500);
+$theme-light-color-accent: map.get($theme-light-palette-accent, 500);
+$theme-light-color-warn: map.get($theme-light-palette-warn, 500);
+
+@include mat.core();
+
+@include mat.all-component-themes(mat.define-dark-theme((
+  color: (
+    primary: $theme-dark-palette-primary,
+    accent: $theme-dark-palette-accent,
+    warn: $theme-dark-palette-warn,
+  )
+)));
+
+.light {
+  @include mat.all-component-colors(mat.define-light-theme((
+    color: (
+      primary: $theme-light-palette-primary,
+      accent: $theme-light-palette-accent,
+      warn: $theme-light-palette-warn,
+    )
+  )));
+}
+
+$primary: $theme-dark-color-primary;
+$warning: $theme-dark-color-accent;
+
+@import "../node_modules/bootstrap/scss/bootstrap-grid";
+
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/variables-dark";
+@import "../node_modules/bootstrap/scss/maps";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/root";
+
+@import "../node_modules/bootstrap/scss/utilities";
+@import "../node_modules/bootstrap/scss/containers";
+@import "../node_modules/bootstrap/scss/grid";
+@import "../node_modules/bootstrap/scss/helpers";
+@import "../node_modules/bootstrap/scss/utilities/api";
+
+@import "../node_modules/bootstrap/scss/mixins/border-radius";
+@import "../node_modules/bootstrap/scss/alert";
+@import "../node_modules/bootstrap/scss/badge";
+
+// VARS
+
+.dark {
+  --theme-color-primary: #{$theme-dark-color-primary};
+  --theme-color-accent: #{$theme-dark-color-accent};
+  --theme-color-warn: #{$theme-dark-color-warn};
+
+  --theme-text-color-primary: white;
+  --theme-text-selection-color-primary: var(--theme-color-primary);
+  --theme-scrollbar-color-primary: var(--theme-color-primary);
+  --theme-body-background-color: #1D2327;
+  --theme-container-background-color-primary: #1B1C1F;
+  --theme-container-background-color-primary-hover: #{lighten(#1B1C1F, 10)};
+  --theme-container-text-color-primary: white;
+  --theme-container-background-color-secondary: #1B1C1F;
+  --theme-input-background-color-primary: var(--theme-container-background-color-primary);
+  --theme-input-label-color-warn: var(--theme-color-accent);
+  --theme-flash-message-background-color-primary: var(--theme-container-background-color-primary);
+  --theme-flash-message-text-color-primary: var(--theme-text-color-primary);
+  --theme-flash-message-background-color-warn: var(--theme-color-warn);
+  --theme-flash-message-text-color-warn: darken(var(--theme-color-warn), 60);
+  --theme-flash-message-background-color-success: greenyellow;
+  --theme-flash-message-text-color-success: #{darken(greenyellow, 60)};
+  --theme-input-overlay-background-color-primary: #50525C;
+  --theme-price-color-primary: #8ecf35;
+}
+
+.light {
+  --theme-color-primary: #{$theme-light-color-primary};
+  --theme-color-accent: #{$theme-light-color-accent};
+  --theme-color-warn: #{$theme-light-color-warn};
+
+  --theme-text-color-primary: black;
+  --theme-text-selection-color-primary: var(--theme-color-primary);
+  --theme-scrollbar-color-primary: var(--theme-color-primary);
+  --theme-body-background-color: white;
+  --theme-container-background-color-primary: #F9F7FC;
+  --theme-container-background-color-primary-hover: #{darken(#F9F7FC, 10)};
+  --theme-container-text-color-primary: black;
+  --theme-container-background-color-secondary: rgb(249, 247, 252);
+  --theme-input-background-color-primary: var(--theme-container-background-color-primary);
+  --theme-input-label-color-warn: var(--theme-color-accent);
+  --theme-flash-message-background-color-primary: var(--theme-container-background-color-primary);
+  --theme-flash-message-text-color-primary: var(--theme-text-color-primary);
+  --theme-flash-message-background-color-warn: var(--theme-color-warn);
+  --theme-flash-message-text-color-warn: darken(var(--theme-color-warn), 60);
+  --theme-flash-message-background-color-success: greenyellow;
+  --theme-flash-message-text-color-success: #{darken(greenyellow, 60)};
+  --theme-input-overlay-background-color-primary: #50525C;
+  --theme-price-color-primary: #8ecf35;
+}
+
+// Inputs
+.mdc-text-field {
+  background-color: var(--theme-input-background-color-primary) !important;
+
+  .mat-mdc-form-field-focus-overlay {
+    background-color: var(--theme-input-overlay-background-color-primary) !important;
+  }
+}
+
+.mat-mdc-form-field-error {
+  color: var(--theme-input-label-color-warn) !important;
+}
+
+.mat-form-field-invalid {
+  .mdc-floating-label {
+    color: var(--theme-input-label-color-warn) !important; /* Цвет текста для ошибок */
+  }
+
+  .mat-mdc-form-field-focus-overlay {
+    color: var(--theme-input-label-color-warn) !important; /* Цвет текста для ошибок */
+  }
+
+  .mdc-line-ripple::before {
+    border-bottom-color: var(--theme-input-label-color-warn) !important;
+  }
+
+  .mdc-line-ripple--active::after {
+    border-bottom-color: var(--theme-input-label-color-warn) !important;
+  }
+}
+
+// Tabs
+.mat-mdc-tab-body-content, .mat-mdc-tab-body.mat-mdc-tab-body-active {
+  overflow: inherit !important;
+}
+
+//select
+.mat-mdc-select-panel {
+  background-color: var(--theme-input-background-color-primary) !important;
+}
+
+// mat-select-search lib
+.mat-select-search-input {
+  background-color: var(--theme-input-background-color-primary) !important;
+}
+
+// Snackbar
+.mat-mdc-snack-bar-container .mdc-snackbar__surface {
+  background-color: inherit !important;
+  box-shadow: inherit !important;
+  padding-right: 0 !important;
+}
+
+// Tables
+.mat-mdc-table {
+  background-color: var(--theme-input-background-color-primary) !important;
+}
+
+.mat-mdc-paginator {
+  background-color: var(--theme-input-background-color-primary) !important;
+}
+
+.mat-mdc-table {
+  width: 100%;
+  table-layout: fixed !important;
+
+  td , th {
+    white-space: normal;
+    word-wrap: break-word;
+  }
+}
+
+/*.mat-mdc-header-row {
+  color: var(--theme-container-text-color-primary) !important;
+}
+
+.mat-mdc-row {
+  color: var(--theme-container-text-color-primary) !important;
+}*/
+
+// Menu
+.mat-mdc-menu-panel {
+  background-color: var(--theme-input-background-color-primary) !important;
+}
+
+// Accordion
+.mat-accordion, .mat-expansion-panel {
+  background-color: var(--theme-container-background-color-primary) !important;
+}
+
+// Card
+.mat-mdc-card-content {
+  height: 100%;
+}
+
+.mdc-list-item__content, .mat-mdc-list-item-title {
+  white-space: inherit !important;
+}
+
+// Tooltip
+.mat-mdc-tooltip > * {
+  background-color: var(--theme-color-primary) !important;
+}
+
+// Dialog
+.mat-mdc-dialog-container .mdc-dialog__surface  {
+  background-color: var(--theme-container-background-color-primary) !important;
+}
+
+.mat-mdc-dialog-container .mdc-dialog__content {
+  color: var(--theme-container-text-color-primary) !important;
+}
+
+.mdc-button.active {
+  color: var(--theme-color-primary) !important;
+  border-bottom: solid 1px var(--theme-color-primary) !important;
+}
+
+// Bootstrap
+.container {
+  padding: 0;
+}
+
+.row {
+  margin: 0;
+}

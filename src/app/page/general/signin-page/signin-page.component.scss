@@ -1,0 +1,13 @@
+@media only screen and (min-width: 768px) {
+  .signin-feature-container {
+    width: 35%;
+    padding: 3rem;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .signin-feature-container {
+    width: 90%;
+    padding: 0.25rem;
+  }
+}

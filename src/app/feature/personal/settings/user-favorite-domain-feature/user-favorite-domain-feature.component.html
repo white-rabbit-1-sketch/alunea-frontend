@@ -1,0 +1,22 @@
+<form [formGroup]="favoriteDomainForm">
+  <div class="row">
+    <div class="col">
+      <mat-form-field class="w-100">
+        <mat-label i18n>Domain</mat-label>
+        <mat-select [formControl]="domainFormControl">
+          @for (domain of domainList; track domain) {
+          <mat-option [value]="domain.getId()">{{domain.getDomain()}}</mat-option>
+          }
+        </mat-select>
+        @if (domainFormControl.hasError('required')) {
+        <mat-error i18n>Please chose <strong>domain</strong></mat-error>
+        }
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col d-flex justify-content-end">
+      <button mat-flat-button type="button" color="primary" (click)="onFavoriteDomainFormSubmit()" [disabled]="isSubmitButtonDisabled" i18n>Save</button>
+    </div>
+  </div>
+</form>

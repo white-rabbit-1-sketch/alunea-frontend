@@ -1,0 +1,122 @@
+@import "theme";
+
+html, body {
+  background-color: var(--theme-body-background-color);
+  min-height: 100%;
+  color: var(--theme-text-color-primary);
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+form {
+  margin-bottom: 0;
+}
+
+.container-bg-color-primary {
+  background-color: var(--theme-container-background-color-primary);
+  color: var(--theme-container-text-color-primary);
+}
+
+.container-text-color-primary {
+  color: var(--theme-container-text-color-primary);
+}
+
+.opacity-70 {
+  opacity: 0.7;
+}
+
+.w-10 {
+  width: 10%;
+}
+
+.w-35 {
+  width: 35%;
+}
+
+.mnw-65 {
+  min-width: 65%;
+}
+
+.mxw-7 {
+  max-width: 7%;
+}
+
+.mxw-10 {
+  max-width: 10%;
+}
+
+.mxw-15 {
+  max-width: 15%;
+}
+
+.mxw-20 {
+  max-width: 20%;
+}
+
+.color-red {
+  color: red;
+}
+
+.color-greenyellow {
+  color: greenyellow;
+}
+
+.color-yellow {
+  color: yellow;
+}
+
+.color-pink {
+  color: #fd4372;
+}
+
+.letter-spacing-3 {
+  letter-spacing: 3px;
+}
+
+.mt-6 {
+  margin-top: 5rem;
+}
+
+.mt-7 {
+  margin-top: 8rem;
+}
+
+.button-large {
+  font-size: 25px !important;
+  padding: 25px 30px !important;
+}
+
+.full-badge .mat-badge-content {
+  width: auto !important;
+  border-radius: 7px;
+  padding-left: 2px !important;
+  padding-right: 2px !important;
+}
+
+.badge-position-center .mat-badge-content {
+  margin-left: -84% !important;
+}
+
+@media only screen and (min-width: 768px) {
+  .mobile {
+    display: none !important;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .desktop {
+    display: none !important;
+  }
+}
+
+::selection {
+  background-color: var(--theme-text-selection-color-primary);
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}

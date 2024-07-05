@@ -1,0 +1,22 @@
+<form [formGroup]="favoriteMailboxForm">
+  <div class="row">
+    <div class="col">
+      <mat-form-field class="w-100">
+        <mat-label i18n>Mailbox</mat-label>
+        <mat-select [formControl]="mailboxFormControl">
+          @for (mailbox of mailboxList; track mailbox) {
+          <mat-option [value]="mailbox.getId()">{{mailbox.getEmail()}}</mat-option>
+          }
+        </mat-select>
+        @if (mailboxFormControl.hasError('required')) {
+        <mat-error i18n>Please chose <strong>mailbox</strong></mat-error>
+        }
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col d-flex justify-content-end">
+      <button mat-flat-button type="button" color="primary" (click)="onFavoriteMailboxFormSubmit()" [disabled]="isSubmitButtonDisabled" i18n>Save</button>
+    </div>
+  </div>
+</form>
